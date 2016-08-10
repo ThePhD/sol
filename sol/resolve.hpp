@@ -25,7 +25,7 @@
 #include "traits.hpp"
 #include "tuple.hpp"
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 template<typename R, typename... Args, typename F, typename = typename std::result_of<Unqualified<F>(Args...)>::type>
 inline auto resolve_i(types<R(Args...)>, F&&) -> R(Unqualified<F>::*)(Args...) {
@@ -91,6 +91,6 @@ template<typename... Sig, typename F>
 inline auto resolve(F&& f) -> decltype(detail::resolve_i(types<Sig...>(), std::forward<F>(f))) {
     return detail::resolve_i(types<Sig...>(), std::forward<F>(f));
 }
-} // sol
+} // old_sol
 
 #endif // SOL_RESOLVE_HPP

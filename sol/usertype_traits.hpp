@@ -24,7 +24,7 @@
 
 #include "demangle.hpp"
 
-namespace sol {
+namespace old_sol {
 
 template<typename T>
 struct usertype_traits {
@@ -37,10 +37,10 @@ template<typename T>
 const std::string usertype_traits<T>::name = detail::demangle(typeid(T));
 
 template<typename T>
-const std::string usertype_traits<T>::metatable = std::string("sol.").append(detail::demangle(typeid(T)));
+const std::string usertype_traits<T>::metatable = std::string("old_sol.").append(detail::demangle(typeid(T)));
 
 template<typename T>
-const std::string usertype_traits<T>::gctable = std::string("sol.").append(detail::demangle(typeid(T))).append(".\xE2\x99\xBB");
+const std::string usertype_traits<T>::gctable = std::string("old_sol.").append(detail::demangle(typeid(T))).append(".\xE2\x99\xBB");
 
 }
 

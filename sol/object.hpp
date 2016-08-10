@@ -25,7 +25,7 @@
 #include "reference.hpp"
 #include "stack.hpp"
 
-namespace sol {
+namespace old_sol {
 class object : public reference {
 public:
     object(lua_State* L, int index = -1): reference(L, index) {}
@@ -66,6 +66,6 @@ inline bool operator!=(const object& lhs, const nil_t&) {
 inline bool operator!=(const nil_t&, const object& rhs) {
     return !rhs.is<nil_t>();
 }
-} // sol
+} // old_sol
 
 #endif // SOL_OBJECT_HPP

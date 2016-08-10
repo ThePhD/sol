@@ -26,7 +26,7 @@
 #include <memory>
 #include <unordered_map>
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 struct ref_call_t {
     ref_call_t() {}
@@ -591,6 +591,6 @@ struct usertype_indexing_function : public usertype_function_core<Function, Tp> 
     }
 };
 
-} // sol
+} // old_sol
 
 #endif // SOL_FUNCTION_TYPES_HPP

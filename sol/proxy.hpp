@@ -26,7 +26,7 @@
 #include "object.hpp"
 #include "function.hpp"
 
-namespace sol {
+namespace old_sol {
 template<typename Table, typename Key>
 struct proxy {
 private:
@@ -130,6 +130,6 @@ template<typename Table, typename Key, typename T>
 inline bool operator!=(const proxy<Table, Key>& right, T&& left) {
     return right.template get<Decay<T>>() != left;
 }
-} // sol
+} // old_sol
 
 #endif // SOL_PROXY_HPP

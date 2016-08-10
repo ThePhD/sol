@@ -25,7 +25,7 @@
 #include "stack.hpp"
 #include <iostream>
 
-namespace sol {
+namespace old_sol {
 namespace debug {
 inline std::string dump_types(lua_State* L) {
     std::string visual;
@@ -47,6 +47,6 @@ inline void print_section(const std::string& message, lua_State* L) {
     std::cout << "-- " << message << " -- [ "  << dump_types(L) << " ]" << std::endl;
 }
 } // debug
-} // sol
+} // old_sol
 
 #endif // SOL_DEBUG_HPP

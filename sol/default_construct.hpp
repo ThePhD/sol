@@ -25,7 +25,7 @@
 #include <memory>
 #include "traits.hpp"
 
-namespace sol {
+namespace old_sol {
 struct default_construct {
     template<typename T, typename... Args>
     void operator()(T&& obj, Args&&... args) const {
@@ -50,6 +50,6 @@ struct placement_construct {
     }
 };
 
-} // sol
+} // old_sol
 
 #endif // SOL_DEFAULT_CONSTRUCTOR_HPP

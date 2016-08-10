@@ -26,7 +26,7 @@
 #include "table.hpp"
 #include <memory>
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 inline int atpanic(lua_State* L) {
     const char* message = lua_tostring(L, -1);
@@ -261,6 +261,6 @@ public:
         return *this;
     }
 };
-} // sol
+} // old_sol
 
 #endif // SOL_STATE_HPP

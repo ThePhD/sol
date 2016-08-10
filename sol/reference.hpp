@@ -24,7 +24,7 @@
 
 #include "types.hpp"
 
-namespace sol {
+namespace old_sol {
 class reference {
 private:
     lua_State* L = nullptr; // non-owning
@@ -46,8 +46,9 @@ public:
         luaL_unref(L, LUA_REGISTRYINDEX, ref);
     }
 
-    void push() const noexcept {
+    int push() const noexcept {
         lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
+		return 1;
     }
 
     reference(reference&& o) noexcept {
@@ -90,6 +91,6 @@ public:
         return L;
     }
 };
-} // sol
+} // old_sol
 
 #endif // SOL_REFERENCE_HPP

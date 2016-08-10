@@ -26,7 +26,7 @@
 #include <string>
 #include "traits.hpp"
 
-namespace sol {
+namespace old_sol {
 struct nil_t {};
 const nil_t nil {};
 inline bool operator==(nil_t, nil_t) { return true; }
@@ -193,6 +193,6 @@ struct lua_type_of<T, typename std::enable_if<std::is_enum<T>::value>::type> : s
 
 };
 
-} // sol
+} // old_sol
 
 #endif // SOL_TYPES_HPP

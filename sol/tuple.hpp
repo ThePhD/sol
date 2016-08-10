@@ -25,7 +25,7 @@
 #include <tuple>
 #include <cstddef>
 
-namespace sol {
+namespace old_sol {
 template<typename... Ts>
 struct reverse_tuple;
 
@@ -96,6 +96,6 @@ const auto default_constructor = constructors<types<>>{};
 template <typename T>
 using ref = std::reference_wrapper<T>;
 
-} // sol
+} // old_sol
 
 #endif // SOL_TUPLE_HPP

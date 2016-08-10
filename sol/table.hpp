@@ -27,7 +27,7 @@
 #include "function_types.hpp"
 #include "usertype.hpp"
 
-namespace sol {
+namespace old_sol {
 class table : public reference {
     friend class state;
     template<typename T, typename U>
@@ -103,8 +103,8 @@ public:
         push();
         stack::push(state(), nil);
         while (lua_next(this->state(), -2)) {
-            sol::object key(state(), -2);
-            sol::object value(state(), -1);
+            old_sol::object key(state(), -2);
+            old_sol::object value(state(), -1);
             fx(key, value);
             lua_pop(state(), 1);
         }
@@ -185,6 +185,6 @@ private:
         pop();
     }
 };
-} // sol
+} // old_sol
 
 #endif // SOL_TABLE_HPP

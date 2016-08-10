@@ -31,7 +31,7 @@
 #include <array>
 #include <algorithm>
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 template<typename T, typename... Args>
 inline std::unique_ptr<T> make_unique(Args&&... args) {
@@ -414,6 +414,6 @@ struct pusher<usertype<T>> {
     }
 };
 } // stack
-} // sol
+} // old_sol
 
 #endif // SOL_USERTYPE_HPP

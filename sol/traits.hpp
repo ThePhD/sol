@@ -26,7 +26,7 @@
 #include <type_traits>
 #include <functional>
 
-namespace sol {
+namespace old_sol {
 template<typename T>
 struct identity { typedef T type; };
 
@@ -315,6 +315,6 @@ Unwrap<Arg> unwrapper(std::reference_wrapper<Arg> arg) {
     return arg.get();
 }
 
-} // sol
+} // old_sol
 
 #endif // SOL_TRAITS_HPP

@@ -32,7 +32,7 @@
 #include <functional>
 #include <memory>
 
-namespace sol {
+namespace old_sol {
 class function : public reference {
 private:
     void luacall(std::size_t argcount, std::size_t resultcount) const {
@@ -173,7 +173,7 @@ struct pusher<function_sig_t<Sigs...>> {
         // We don't need to store the size, because the other side is templated
         // with the same member function pointer type
         Decay<Fx> memfxptr(std::forward<Fx>(fx));
-        auto userptr = sol::detail::get_ptr(obj);
+        auto userptr = old_sol::detail::get_ptr(obj);
         void* userobjdata = static_cast<void*>(userptr);
         lua_CFunction freefunc = &static_member_function<Decay<decltype(*userptr)>, Fx>::call;
 
@@ -235,7 +235,7 @@ struct getter<std::function<Signature>> {
     template<typename... FxArgs, typename... Ret>
     static std::function<Signature> get_std_func(types<FxArgs...>, types<Ret...>, lua_State* L, int index = -1) {
         typedef typename function_traits<Signature>::return_type return_t;
-        sol::function f(L, index);
+        old_sol::function f(L, index);
         auto fx = [f, L, index](FxArgs&&... args) -> return_t {
             return f(types<Ret...>(), std::forward<FxArgs>(args)...);
         };
@@ -244,7 +244,7 @@ struct getter<std::function<Signature>> {
 
     template<typename... FxArgs>
     static std::function<Signature> get_std_func(types<FxArgs...>, types<void>, lua_State* L, int index = -1) {
-        sol::function f(L, index);
+        old_sol::function f(L, index);
         auto fx = [f, L, index](FxArgs&&... args) -> void {
             f(std::forward<FxArgs>(args)...);
         };
@@ -261,6 +261,6 @@ struct getter<std::function<Signature>> {
     }
 };
 } // stack
-} // sol
+} // old_sol
 
 #endif // SOL_FUNCTION_HPP

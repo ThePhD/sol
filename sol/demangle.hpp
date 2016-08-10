@@ -30,7 +30,7 @@
 #include <cxxabi.h>
 #endif
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 #ifdef _MSC_VER
 inline std::string get_type_name(const std::type_info& id) {
@@ -73,6 +73,6 @@ inline std::string demangle(const std::type_info& id) {
     return realname;
 }
 } // detail
-} // sol
+} // old_sol
 
 #endif // SOL_DEMANGLE_HPP

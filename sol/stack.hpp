@@ -32,7 +32,7 @@
 #include <cstring>
 #include <functional>
 
-namespace sol {
+namespace old_sol {
 namespace detail {
 template<typename T>
 inline T* get_ptr(T& val) {
@@ -101,7 +101,7 @@ template<typename T, std::size_t... I>
 inline int push_tuple(lua_State* L, indices<I...>, T&& tuplen) {
     using swallow = char[1 + sizeof...(I)];
     int pushcount = 0;
-    swallow {'\0', (pushcount += sol::stack::push(L, std::get<I>(tuplen)), '\0')... };
+    swallow {'\0', (pushcount += old_sol::stack::push(L, std::get<I>(tuplen)), '\0')... };
     return pushcount;
 }
 
@@ -259,7 +259,7 @@ template<>
 struct getter<nil_t> {
     static nil_t get(lua_State* L, int index = -1) {
         if(lua_isnil(L, index) == 0) {
-            throw sol::error("not nil");
+            throw old_sol::error("not nil");
         }
         return nil_t{ };
     }
@@ -563,6 +563,6 @@ inline call_syntax get_call_syntax(lua_State* L, const std::string& meta) {
     return call_syntax::dot;
 }
 } // stack
-} // sol
+} // old_sol
 
 #endif // SOL_STACK_HPP

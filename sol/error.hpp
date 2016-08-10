@@ -25,11 +25,11 @@
 #include <stdexcept>
 #include <string>
 
-namespace sol {
+namespace old_sol {
 class error : public std::runtime_error {
 public:
     error(const std::string& str): std::runtime_error("lua: error: " + str) {}
 };
-} // sol
+} // old_sol
 
 #endif // SOL_ERROR_HPP
