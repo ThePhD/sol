@@ -513,7 +513,7 @@ struct check_arguments<false> {
 template <bool checkargs = false, std::size_t... I, typename R, typename... Args, typename Fx, typename... FxArgs, typename = typename std::enable_if<!std::is_void<R>::value>::type>
 inline R call(lua_State* L, int start, indices<I...>, types<R>, types<Args...> ta, Fx&& fx, FxArgs&&... args) {
     const int stacksize = lua_gettop(L);
-    const int firstargument = start + stacksize - std::max(sizeof...(Args)-1, static_cast<std::size_t>(0));
+    const int firstargument = static_cast<int>(start + stacksize - std::max(sizeof...(Args)-1, static_cast<std::size_t>(0)));
 
     detail::check_arguments<checkargs>{}.check(L, firstargument, ta, ta);
 
@@ -523,7 +523,7 @@ inline R call(lua_State* L, int start, indices<I...>, types<R>, types<Args...> t
 template <bool checkargs = false, std::size_t... I, typename... Args, typename Fx, typename... FxArgs>
 inline void call(lua_State* L, int start, indices<I...>, types<void>, types<Args...> ta, Fx&& fx, FxArgs&&... args) {
     const int stacksize = lua_gettop(L);
-    const int firstargument = start + stacksize - std::max(sizeof...(Args)-1, static_cast<std::size_t>(0));
+    const int firstargument = static_cast<int>(start + stacksize - std::max(sizeof...(Args)-1, static_cast<std::size_t>(0)));
 
     bool checks = detail::check_arguments<checkargs>{}.check(L, firstargument, ta, ta);
     if ( !checks )
