@@ -293,7 +293,7 @@ struct base_function {
         static void func_gc (std::false_type, lua_State* L) {
             // Shut up clang tautological error without throwing out std::size_t
             for(std::size_t i = 0; i < limit; ++i) {
-                upvalue up = stack::get<upvalue>(L, i + 1);
+                upvalue up = stack::get<upvalue>(L, static_cast<int>(i + 1));
                 base_function* obj = static_cast<base_function*>(up.value);
                 std::allocator<base_function> alloc{};
                 alloc.destroy(obj);
